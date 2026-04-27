@@ -1,0 +1,7 @@
+{"t":0,"agent":"ad6fa0f","agent_type":"general-purpose","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"aeb45f0","agent_type":"general-purpose","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"a9ea2b0","agent_type":"general-purpose","event":"agent_start","parent_mode":"none"}
+{"t":0,"agent":"ad6fa0f","agent_type":"general-purpose","event":"agent_stop","success":true,"duration_ms":427320}
+{"t":0,"agent":"a9ea2b0","agent_type":"general-purpose","event":"agent_stop","success":true,"duration_ms":452863}
+{"t":0,"agent":"aeb45f0","agent_type":"general-purpose","event":"agent_stop","success":true,"duration_ms":834473}
+{"t":0,"agent":"system","event":"skill_invoked","skill_name":"vercel:deploy"}

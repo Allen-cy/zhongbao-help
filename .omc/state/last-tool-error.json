@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"vercel env add NEXT_PUBLIC_SUPABASE_URL --scope chongzhengchais-projects --yes <<< 'https://etdknmkmxtsicnkfzjww.supabase.co/rest/v1/' 2>&1\",\"description\":\"Add Supabase URL env var\"}",
+  "error": "Exit code 1\n<claude-code-hint v=\"1\" type=\"plugin\" value=\"vercel@claude-plugins-official\" />\nError: Invalid number of arguments. Usage: `vercel env add <name> <target> <gitbranch> < <file>`",
+  "timestamp": "2026-04-27T13:10:48.172Z",
+  "retry_count": 1
+}

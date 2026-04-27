@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="dark" lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>LANGFANG_OPS - 廊坊运营 (Dark Preview)</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+:root {
+  --surface-variant: #353534;
+  --surface-tint: #ffb4ac;
+  --surface-container: #201f1f;
+  --surface-dim: #131313;
+  --primary-container: #ff544c;
+  --error: #ffb4ab;
+  --error-container: #93000a;
+  --on-error: #690005;
+  --secondary: #7ddc7a;
+  --secondary-fixed: #98f994;
+  --tertiary: #ffba38;
+  --background: #131313;
+  --on-background: #e5e2e1;
+  --on-surface: #e5e2e1;
+  --surface: #131313;
+  --border-radius: 0.25rem;
+  --edge-margin: 16px;
+  --touch-target-min: 48px;
+}
+* { box-sizing: border-box; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--background);
+  color: var(--on-background);
+  min-height: 100dvh;
+  margin: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+.font-headline-xl { font-family: 'Space Grotesk', sans-serif; font-size: 40px; font-weight: 700; line-height: 44px; letter-spacing: -0.02em; }
+.font-headline-lg { font-family: 'Space Grotesk', sans-serif; font-size: 28px; font-weight: 700; line-height: 32px; letter-spacing: -0.01em; }
+.font-headline-md { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 600; line-height: 24px; }
+.font-body-lg { font-family: 'Inter', sans-serif; font-size: 18px; font-weight: 500; line-height: 26px; }
+.font-body-md { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; }
+.font-label-xl { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; line-height: 16px; }
+.font-label-md { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 600; line-height: 14px; }
+.font-data-display { font-family: 'Space Grotesk', sans-serif; font-size: 48px; font-weight: 700; line-height: 48px; letter-spacing: -0.04em; }
+.text-primary-container { color: var(--primary-container); }
+.text-error { color: var(--error); }
+.text-secondary { color: var(--secondary); }
+.text-tertiary { color: var(--tertiary); }
+.text-on-surface { color: var(--on-surface); }
+.text-surface-variant { color: var(--surface-variant); }
+.bg-surface { background: var(--surface); }
+.bg-surface-container { background: var(--surface-container); }
+.bg-surface-container-high { background: #2a2a2a; }
+.bg-surface-container-low { background: #1c1b1b; }
+.bg-surface-container-lowest { background: #0e0e0e; }
+.bg-surface-dim { background: var(--surface-dim); }
+.bg-primary-container { background: var(--primary-container); }
+.bg-error { background: var(--error); }
+.bg-error-container { background: var(--error-container); }
+.bg-secondary { background: var(--secondary); }
+.bg-tertiary { background: var(--tertiary); }
+.bg-background { background: var(--background); }
+.bg-zinc-950 { background: #09090b; }
+.border-surface-variant { border-color: var(--surface-variant); }
+.border-primary-container { border-color: var(--primary-container); }
+.border-error { border-color: var(--error); }
+.border-secondary { border-color: var(--secondary); }
+.border-tertiary { border-color: var(--tertiary); }
+.border-zinc-800 { border-color: #27272a; }
+.text-on-primary-container { color: #5c0005; }
+.text-on-error { color: var(--on-error); }
+.text-on-error-container { color: #ffdad6; }
+.text-on-secondary { color: #00390a; }
+.text-on-tertiary { color: #432c00; }
+.text-inverse-surface { color: #e5e2e1; }
+.text-outline { color: var(--surface-variant); }
+.text-on-surface-variant { color: var(--surface-variant); }
+.uppercase { text-transform: uppercase; }
+.rounded-DEFAULT { border-radius: var(--border-radius); }
+.rounded-sm { border-radius: 0.125rem; }
+.rounded-lg { border-radius: 0.5rem; }
+.rounded-full { border-radius: 9999px; }
+.px-edge-margin { padding-left: var(--edge-margin); padding-right: var(--edge-margin); }
+.py-edge-margin { padding-top: 20px; padding-bottom: 20px; }
+.h-touch-target-min { min-height: var(--touch-target-min); }
+.w-touch-target-min { min-width: var(--touch-target-min); }
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.material-symbols-filled { font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.tracking-tighter { letter-spacing: -0.02em; }
+.tracking-widest { letter-spacing: 0.1em; }
+.shadow-md { box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3); }
+.backdrop-blur-md { backdrop-filter: blur(12px); }
+/* Dark Mode Specific Overrides - forced dark for preview */
+html.dark body { background: #000; }
+</style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-20 pt-14" style="background: #000;">
+
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-14 bg-black border-b-2 border-zinc-800">
+  <div class="flex items-center gap-2">
+    <span class="material-symbols-outlined text-red-600" style="font-variation-settings: 'FILL' 1;">location_on</span>
+    <h1 class="text-lg font-black text-red-600 tracking-tighter uppercase" style="font-family: 'Space Grotesk', sans-serif; letter-spacing: -0.02em;">LANGFANG_OPS</h1>
+  </div>
+  <button class="flex items-center justify-center hover:bg-zinc-800 transition-colors rounded-sm p-1">
+    <span class="material-symbols-outlined text-red-600" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+  </button>
+</header>
+
+<main class="max-w-3xl mx-auto px-edge-margin py-edge-margin space-y-lg">
+
+  <!-- Darker User Identity Section -->
+  <section class="flex flex-col items-center justify-center space-y-sm">
+    <div class="w-32 h-32 rounded-full border-4 border-red-900 overflow-hidden mb-2 relative">
+      <img alt="Rider Profile" class="w-full h-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"/>
+      <div class="absolute bottom-0 left-0 w-full bg-red-700 text-white text-center py-1 font-label-md font-bold uppercase">活跃中</div>
+    </div>
+    <h2 class="font-headline-lg text-center uppercase tracking-tight">骑手 8492-X</h2>
+    <div class="flex items-center gap-xs text-green-400 px-sm py-1 border-2 border-green-500 rounded-sm">
+      <span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+      <span class="font-label-xl uppercase">精英认证</span>
+    </div>
+  </section>
+
+  <!-- Stats Grid - Higher Contrast Dark -->
+  <section class="grid grid-cols-2 gap-sm">
+    <div class="bg-neutral-900 border-2 border-red-900 rounded-DEFAULT p-md flex flex-col justify-between">
+      <div class="flex items-start justify-between mb-lg">
+        <span class="font-label-xl text-red-400 uppercase">累计标记</span>
+        <span class="material-symbols-outlined text-red-400">flag</span>
+      </div>
+      <div class="font-data-display text-white">1,402</div>
+    </div>
+    <div class="bg-neutral-900 border-2 border-green-900 rounded-DEFAULT p-md flex flex-col justify-between">
+      <div class="flex items-start justify-between mb-lg">
+        <span class="font-label-xl text-green-400 uppercase">信誉分</span>
+        <span class="material-symbols-outlined text-green-400">star</span>
+      </div>
+      <div class="font-data-display text-white">98.4<span class="text-headline-md font-headline-md">%</span></div>
+    </div>
+    <div class="col-span-2 bg-neutral-900 border-2 border-zinc-700 rounded-DEFAULT p-md">
+      <div class="flex items-start justify-between mb-sm">
+        <span class="font-label-xl text-zinc-300 uppercase">排名：前 5%</span>
+        <span class="font-label-md text-zinc-500 uppercase">下一等级：还差 15K 积分</span>
+      </div>
+      <div class="w-full bg-neutral-950 h-3 rounded-sm overflow-hidden mb-2 border border-zinc-800">
+        <div class="bg-red-700 h-full w-[85%] rounded-sm"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Action List - High Contrast Dark -->
+  <section class="space-y-sm">
+    <a class="flex items-center justify-between p-md bg-neutral-900 border-2 border-zinc-700 rounded-DEFAULT hover:border-red-700 transition-colors group min-h-touch-target-min cursor-pointer" href="#">
+      <div class="flex items-center gap-md">
+        <span class="material-symbols-outlined text-zinc-500 group-hover:text-red-400 transition-colors">history</span>
+        <span class="font-headline-md text-zinc-200">我的标记</span>
+      </div>
+      <span class="material-symbols-outlined text-zinc-500">chevron_right</span>
+    </a>
+    <a class="flex items-center justify-between p-md bg-neutral-900 border-2 border-zinc-700 rounded-DEFAULT hover:border-red-700 transition-colors group min-h-touch-target-min cursor-pointer" href="#">
+      <div class="flex items-center gap-md">
+        <span class="material-symbols-outlined text-zinc-500 group-hover:text-red-400 transition-colors">help_center</span>
+        <span class="font-headline-md text-zinc-200">帮助中心</span>
+      </div>
+      <span class="material-symbols-outlined text-zinc-500">chevron_right</span>
+    </a>
+    <a class="flex items-center justify-between p-md bg-neutral-900 border-2 border-zinc-700 rounded-DEFAULT hover:border-red-700 transition-colors group min-h-touch-target-min cursor-pointer" href="#">
+      <div class="flex items-center gap-md">
+        <span class="material-symbols-outlined text-zinc-500 group-hover:text-red-400 transition-colors">settings</span>
+        <span class="font-headline-md text-zinc-200">设置</span>
+      </div>
+      <span class="material-symbols-outlined text-zinc-500">chevron_right</span>
+    </a>
+  </section>
+
+  <!-- Log Out Button -->
+  <section class="pt-md">
+    <button class="w-full min-h-touch-target-min bg-transparent border-2 border-red-500 text-red-500 font-headline-md uppercase tracking-wide hover:bg-red-600 hover:text-white transition-colors rounded-DEFAULT flex items-center justify-center gap-2 cursor-pointer">
+      <span class="material-symbols-outlined">logout</span> 退出登录
+    </button>
+  </section>
+
+</main>
+
+<!-- BottomNavBar - Pure Black Dark -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-black border-t-2 border-zinc-800">
+  <a class="flex flex-col items-center justify-center text-zinc-500 px-2 py-1 hover:text-red-500 transition-colors min-h-touch-target-min min-w-touch-target-min" href="#">
+    <span class="material-symbols-outlined mb-1">map</span>
+    <span style="font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase;">地图</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-zinc-500 px-2 py-1 hover:text-red-500 transition-colors min-h-touch-target-min min-w-touch-target-min" href="#">
+    <span class="material-symbols-outlined mb-1">add_box</span>
+    <span style="font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase;">上报</span>
+  </a>
+  <a class="flex flex-col items-center justify-center text-zinc-500 px-2 py-1 hover:text-red-500 transition-colors min-h-touch-target-min min-w-touch-target-min" href="#">
+    <span class="material-symbols-outlined mb-1">leaderboard</span>
+    <span style="font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase;">排行</span>
+  </a>
+  <a class="flex flex-col items-center justify-center bg-red-600 text-white px-2 py-1 rounded-sm min-h-touch-target-min min-w-touch-target-min" href="#">
+    <span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">person</span>
+    <span style="font-family: 'Space Grotesk', sans-serif; font-size: 10px; font-weight: 700; text-transform: uppercase;">我的</span>
+  </a>
+</nav>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Quick Entry - Trash Orders</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&amp;family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#353534",
+                      "surface-tint": "#ffb4ac",
+                      "on-secondary-fixed-variant": "#005313",
+                      "surface-container": "#201f1f",
+                      "secondary-container": "#03711e",
+                      "on-secondary-fixed": "#002204",
+                      "inverse-surface": "#e5e2e1",
+                      "primary-container": "#ff544c",
+                      "surface-dim": "#131313",
+                      "primary-fixed-dim": "#ffb4ac",
+                      "on-tertiary-fixed-variant": "#604100",
+                      "on-background": "#e5e2e1",
+                      "primary-fixed": "#ffdad6",
+                      "surface-container-lowest": "#0e0e0e",
+                      "tertiary-container": "#c08600",
+                      "on-surface": "#e5e2e1",
+                      "tertiary-fixed-dim": "#ffba38",
+                      "error": "#ffb4ab",
+                      "surface": "#131313",
+                      "tertiary-fixed": "#ffdeac",
+                      "tertiary": "#ffba38",
+                      "on-primary-fixed": "#410002",
+                      "outline": "#ab8985",
+                      "outline-variant": "#5b403d",
+                      "on-tertiary-fixed": "#281900",
+                      "on-secondary-container": "#92f28e",
+                      "surface-container-highest": "#353534",
+                      "on-tertiary-container": "#3a2600",
+                      "background": "#131313",
+                      "surface-container-high": "#2a2a2a",
+                      "error-container": "#93000a",
+                      "surface-container-low": "#1c1b1b",
+                      "on-tertiary": "#432c00",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#7ddc7a",
+                      "secondary": "#7ddc7a",
+                      "inverse-on-surface": "#313030",
+                      "secondary-fixed": "#98f994",
+                      "on-primary-container": "#5c0005",
+                      "on-surface-variant": "#e4beb9",
+                      "on-error": "#690005",
+                      "on-secondary": "#00390a",
+                      "primary": "#ffb4ac",
+                      "on-primary-fixed-variant": "#93000d",
+                      "on-primary": "#690006",
+                      "surface-bright": "#393939",
+                      "inverse-primary": "#bb171c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xl": "48px",
+                      "edge-margin": "16px",
+                      "lg": "32px",
+                      "md": "20px",
+                      "base": "8px",
+                      "touch-target-min": "48px",
+                      "sm": "12px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "headline-xl": [
+                              "Space Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Space Grotesk"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Space Grotesk"
+                      ],
+                      "label-xl": [
+                              "Space Grotesk"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "data-display": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-xl": [
+                              "40px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "28px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "26px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "14px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-xl": [
+                              "14px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-display": [
+                              "48px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0 pt-14">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-14 bg-zinc-950 border-b-2 border-zinc-800">
+<div class="flex items-center gap-2 text-zinc-500 hover:text-red-500 transition-colors cursor-pointer">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>close</span>
+</div>
+<div class="text-lg font-black text-red-600 tracking-tighter" style="">LANGFANG_OPS</div>
+<div class="flex items-center gap-2 text-zinc-500 hover:text-red-500 transition-colors cursor-pointer">
+<span class="material-symbols-outlined" style='font-variation-settings: "FILL" 1;'>account_circle</span>
+</div>
+</header>
+<main class="max-w-3xl mx-auto px-edge-margin py-md space-y-lg">
+<!-- Score Header -->
+<section class="flex flex-col items-center justify-center space-y-sm">
+<h1 class="font-headline-xl text-headline-xl text-center uppercase text-primary-container" style="">标记垃圾单</h1>
+<p class="font-body-md text-body-md text-surface-variant text-center" style="">上报高难度订单，提醒同行避坑。</p>
+<div class="relative w-48 h-48 mt-md flex items-center justify-center rounded-full border-[8px] border-surface-variant">
+<!-- Simulated Score Meter -->
+<div class="absolute inset-0 rounded-full border-[8px] border-error" style="clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%);"></div>
+<div class="flex flex-col items-center justify-center z-10 bg-surface w-40 h-40 rounded-full border-2 border-surface-variant">
+<span class="font-data-display text-data-display text-error" style="">85</span>
+<span class="font-label-xl text-label-xl text-error uppercase" style="">极其困难</span>
+</div>
+</div>
+</section>
+<!-- Location Selection -->
+<section class="bg-surface-container border-2 border-surface-variant rounded flex items-center justify-between p-md">
+<div class="flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-container" style='font-variation-settings: "FILL" 1;'>location_on</span>
+<div>
+<h2 class="font-label-xl text-label-xl uppercase text-on-surface" style="">当前位置已识别</h2>
+<p class="font-body-md text-body-md text-surface-variant" style="">上报高难度订单，提醒同行避坑。</p>
+</div>
+</div>
+<button class="bg-surface-variant text-on-surface font-label-xl text-label-xl px-sm py-xs border-2 border-outline-variant hover:bg-surface-bright transition-colors uppercase" style="">修改</button>
+</section>
+<!-- Tag Selection -->
+<section class="space-y-md">
+<!-- Pickup Difficulties -->
+<div class="bg-surface-container border-2 border-surface-variant p-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm uppercase border-b-2 border-surface-variant pb-xs" style="">取餐难点</h3>
+<div class="flex flex-wrap gap-sm mt-sm">
+<button class="border-2 border-error bg-error-container text-on-error-container font-label-xl text-label-xl px-md py-sm uppercase flex items-center gap-xs" style="">商场难找 <span class="font-label-md text-label-md opacity-75" style="">+20</span></button>
+<button class="border-2 border-surface-variant bg-surface text-on-surface hover:border-error hover:text-error transition-colors font-label-xl text-label-xl px-md py-sm uppercase flex items-center gap-xs" style="">出餐慢 <span class="font-label-md text-label-md opacity-75" style="">+15</span></button>
+<button class="border-2 border-surface-variant bg-surface text-on-surface hover:border-error hover:text-error transition-colors font-label-xl text-label-xl px-md py-sm uppercase flex items-center gap-xs" style="">态度恶劣 <span class="font-label-md text-label-md opacity-75" style="">+10</span></button>
+</div>
+</div>
+<!-- Delivery Difficulties -->
+<div class="bg-surface-container border-2 border-surface-variant p-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm uppercase border-b-2 border-surface-variant pb-xs" style="">送餐难点</h3>
+<div class="flex flex-wrap gap-sm mt-sm">
+<button class="border-2 border-error bg-error-container text-on-error-container font-label-xl text-label-xl px-md py-sm uppercase flex items-center gap-xs" style="">无电梯 <span class="font-label-md text-label-md opacity-75" style="">+30</span></button>
+<button class="border-2 border-surface-variant bg-surface text-on-surface hover:border-error hover:text-error transition-colors font-label-xl text-label-xl px-md py-sm uppercase flex items-center gap-xs" style="">门禁严格 <span class="font-label-md text-label-md opacity-75" style="">+25</span></button>
+<button class="border-2 border-error bg-error-container text-on-error-container font-label-xl text-label-xl px-md py-sm uppercase flex items-center gap-xs" style="">坡度陡 <span class="font-label-md text-label-md opacity-75" style="">+15</span></button>
+</div>
+</div>
+<!-- Order Quality -->
+<div class="bg-surface-container border-2 border-surface-variant p-md">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-sm uppercase border-b-2 border-surface-variant pb-xs" style="">订单性价比</h3>
+<div class="flex flex-wrap gap-sm mt-sm">
+<button class="border-2 border-surface-variant bg-surface text-on-surface hover:border-error hover:text-error transition-colors font-label-xl text-label-xl px-md py-sm uppercase flex items-center gap-xs" style="">单价极低 <span class="font-label-md text-label-md opacity-75" style="">+10</span></button>
+<button class="border-2 border-surface-variant bg-surface text-on-surface hover:border-error hover:text-error transition-colors font-label-xl text-label-xl px-md py-sm uppercase flex items-center gap-xs" style="">大件重物 <span class="font-label-md text-label-md opacity-75" style="">+20</span></button>
+</div>
+</div>
+</section>
+<!-- Submit Button -->
+<section class="mt-xl">
+<button class="w-full bg-error text-on-error font-headline-lg text-headline-lg uppercase py-md border-2 border-error hover:bg-error-container hover:text-error transition-colors flex items-center justify-center gap-sm h-touch-target-min" style=""><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">warning</span> 立即提交标记</button>
+</section>
+</main>
+<!-- BottomNavBar is suppressed due to 'Task-Focused' / Transactional nature of this reporting page as per Semantic Shell Mandate -->
+</body></html>

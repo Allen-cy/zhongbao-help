@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>LANGFANG_OPS - Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#353534",
+                      "surface-tint": "#ffb4ac",
+                      "on-secondary-fixed-variant": "#005313",
+                      "surface-container": "#201f1f",
+                      "secondary-container": "#03711e",
+                      "on-secondary-fixed": "#002204",
+                      "inverse-surface": "#e5e2e1",
+                      "primary-container": "#ff544c",
+                      "surface-dim": "#131313",
+                      "primary-fixed-dim": "#ffb4ac",
+                      "on-tertiary-fixed-variant": "#604100",
+                      "on-background": "#e5e2e1",
+                      "primary-fixed": "#ffdad6",
+                      "surface-container-lowest": "#0e0e0e",
+                      "tertiary-container": "#c08600",
+                      "on-surface": "#e5e2e1",
+                      "tertiary-fixed-dim": "#ffba38",
+                      "error": "#ffb4ab",
+                      "surface": "#131313",
+                      "tertiary-fixed": "#ffdeac",
+                      "tertiary": "#ffba38",
+                      "on-primary-fixed": "#410002",
+                      "outline": "#ab8985",
+                      "outline-variant": "#5b403d",
+                      "on-tertiary-fixed": "#281900",
+                      "on-secondary-container": "#92f28e",
+                      "surface-container-highest": "#353534",
+                      "on-tertiary-container": "#3a2600",
+                      "background": "#131313",
+                      "surface-container-high": "#2a2a2a",
+                      "error-container": "#93000a",
+                      "surface-container-low": "#1c1b1b",
+                      "on-tertiary": "#432c00",
+                      "on-error-container": "#ffdad6",
+                      "secondary-fixed-dim": "#7ddc7a",
+                      "secondary": "#7ddc7a",
+                      "inverse-on-surface": "#313030",
+                      "secondary-fixed": "#98f994",
+                      "on-primary-container": "#5c0005",
+                      "on-surface-variant": "#e4beb9",
+                      "on-error": "#690005",
+                      "on-secondary": "#00390a",
+                      "primary": "#ffb4ac",
+                      "on-primary-fixed-variant": "#93000d",
+                      "on-primary": "#690006",
+                      "surface-bright": "#393939",
+                      "inverse-primary": "#bb171c"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "xl": "48px",
+                      "edge-margin": "16px",
+                      "lg": "32px",
+                      "md": "20px",
+                      "base": "8px",
+                      "touch-target-min": "48px",
+                      "sm": "12px",
+                      "xs": "4px"
+              },
+              "fontFamily": {
+                      "headline-xl": [
+                              "Space Grotesk"
+                      ],
+                      "headline-lg": [
+                              "Space Grotesk"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Space Grotesk"
+                      ],
+                      "label-xl": [
+                              "Space Grotesk"
+                      ],
+                      "headline-md": [
+                              "Space Grotesk"
+                      ],
+                      "data-display": [
+                              "Space Grotesk"
+                      ]
+              },
+              "fontSize": {
+                      "headline-xl": [
+                              "40px",
+                              {
+                                      "lineHeight": "44px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "28px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "26px",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "14px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-xl": [
+                              "14px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "20px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "data-display": [
+                              "48px",
+                              {
+                                      "lineHeight": "48px",
+                                      "letterSpacing": "-0.04em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background pb-20 pt-16 selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-4 h-14 bg-zinc-950 border-b-2 border-zinc-800">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-red-600 text-2xl" data-icon="location_on">location_on</span>
+<h1 class="text-lg font-black text-red-600 tracking-tighter uppercase font-['Space_Grotesk']">LANGFANG_OPS</h1>
+</div>
+<button class="flex items-center justify-center hover:bg-zinc-800 transition-colors rounded-sm p-1 active:opacity-80 active:scale-95">
+<span class="material-symbols-outlined text-red-600 text-2xl" data-icon="account_circle">account_circle</span>
+</button>
+</header>
+<main class="px-edge-margin pt-lg pb-xl space-y-lg max-w-3xl mx-auto">
+<!-- User Identity Section -->
+<section class="flex flex-col items-center justify-center space-y-sm">
+<div class="w-32 h-32 rounded-full border-4 border-surface-variant overflow-hidden mb-2 relative">
+<img alt="Rider Profile Photo" class="w-full h-full object-cover" data-alt="close-up portrait of a delivery rider wearing a helmet and dark industrial jacket, high contrast, gritty urban feel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAxWfBfyScxP4LPIYa9yj6tIpHQrTHR-p0dWfAgIY74D53TEleWWPJTa6VAr8vHuPOv5ePwgkG9UMWowAAqp3657rpO6D5mMtN5mKQVxhnI3QXohMvEKLtYaS8er5IHlYw659-mWSIut2OpUZ-tSihDRYGzJdOuuOKVAL3NS0wa-1TLGF9T1Ca0a21zn2dsv09SCjLUBUr5NKGZEhSQPCUEF-SWdKdRdBqOZRhWaPYbRW1SQxnC7s4fjHscn4O9avgn7PB9u17UqU"/>
+<div class="absolute bottom-0 left-0 w-full bg-primary-container text-on-primary-container text-center py-1 font-label-md font-bold uppercase">活跃中</div>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-center uppercase tracking-tight">骑手 8492-X</h2>
+<div class="flex items-center gap-xs text-secondary px-sm py-1 border-2 border-secondary rounded-sm">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-xl text-label-xl uppercase">精英认证</span>
+</div>
+</section>
+<!-- Stats Grid (Bento Style) -->
+<section class="grid grid-cols-2 gap-sm">
+<!-- Stat Card 1 -->
+<div class="bg-surface-container border-2 border-surface-variant rounded-DEFAULT p-md flex flex-col justify-between">
+<div class="flex items-start justify-between mb-lg">
+<span class="font-label-xl text-label-xl text-surface-tint uppercase">累计标记</span>
+<span class="material-symbols-outlined text-surface-tint">累计标记</span>
+</div>
+<div class="font-data-display text-data-display text-on-surface">1,402</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="bg-surface-container border-2 border-surface-variant rounded-DEFAULT p-md flex flex-col justify-between">
+<div class="flex items-start justify-between mb-lg">
+<span class="font-label-xl text-label-xl text-secondary uppercase">信誉分</span>
+<span class="material-symbols-outlined text-secondary">信誉分</span>
+</div>
+<div class="font-data-display text-data-display text-on-surface">98.4<span class="text-headline-md font-headline-md">%</span></div>
+</div>
+<!-- Stat Card 3 (Full Width) -->
+<div class="col-span-2 bg-surface-container border-2 border-surface-variant rounded-DEFAULT p-md flex flex-col">
+<div class="flex items-start justify-between mb-sm">
+<span class="font-label-xl text-label-xl text-inverse-surface uppercase">排名：前 5%</span>
+<span class="material-symbols-outlined text-inverse-surface">下一等级：还差 15K 积分</span>
+</div>
+<div class="w-full bg-surface-container-lowest h-3 rounded-sm overflow-hidden mb-2 border border-surface-variant">
+<div class="bg-primary h-full w-[85%] rounded-sm" style="background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.2) 10px, rgba(0,0,0,0.2) 20px);"></div>
+</div>
+<div class="flex justify-between font-label-md text-label-md text-on-surface-variant uppercase">
+<span>排名：前 5%</span>
+<span>下一等级：还差 15K 积分</span>
+</div>
+</div>
+</section>
+<!-- Action List -->
+<section class="space-y-sm">
+<a class="flex items-center justify-between p-md bg-surface-container-high border-2 border-surface-variant rounded-DEFAULT hover:border-surface-tint transition-colors group min-h-[48px]" href="#">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-surface-tint transition-colors">history</span>
+<span class="font-headline-md text-headline-md text-on-surface">我的标记</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-md bg-surface-container-high border-2 border-surface-variant rounded-DEFAULT hover:border-surface-tint transition-colors group min-h-[48px]" href="#">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-surface-tint transition-colors">help_center</span>
+<span class="font-headline-md text-headline-md text-on-surface">我的标记</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</a>
+<a class="flex items-center justify-between p-md bg-surface-container-high border-2 border-surface-variant rounded-DEFAULT hover:border-surface-tint transition-colors group min-h-[48px]" href="#">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-surface-tint transition-colors">settings</span>
+<span class="font-headline-md text-headline-md text-on-surface">我的标记</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant">chevron_right</span>
+</a>
+</section>
+<!-- Log Out Button -->
+<section class="pt-md">
+<button class="w-full min-h-[48px] bg-transparent border-2 border-error text-error font-headline-md text-headline-md uppercase tracking-wide hover:bg-error hover:text-on-error transition-colors rounded-DEFAULT flex items-center justify-center gap-2"><span class="material-symbols-outlined">logout</span> 退出登录</button>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-zinc-950 border-t-2 border-zinc-800 md:hidden">
+<a class="flex flex-col items-center justify-center text-zinc-500 px-2 py-1 hover:text-red-500 transition-colors min-h-[48px] min-w-[48px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="map">map</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase">地图</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 px-2 py-1 hover:text-red-500 transition-colors min-h-[48px] min-w-[48px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="add_box">add_box</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase">上报</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-500 px-2 py-1 hover:text-red-500 transition-colors min-h-[48px] min-w-[48px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="leaderboard">leaderboard</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase">排行榜</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-red-600 text-black px-2 py-1 rounded-sm active:scale-90 transition-transform min-h-[48px] min-w-[48px]" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-['Space_Grotesk'] text-[10px] font-bold uppercase">我的</span>
+</a>
+</nav>
+</body></html>
