@@ -92,7 +92,7 @@ CREATE POLICY "Public read rankings" ON rankings FOR SELECT USING (true);
 CREATE POLICY "Public read difficulty_tags" ON difficulty_tags FOR SELECT USING (true);
 
 -- Authenticated insert for trash_orders
-CREATE POLICY "Authenticated insert trash_orders" ON trash_orders FOR INSERT WITH CHECK (auth.role() = 'authenticated');
+CREATE POLICY "Public insert trash_orders" ON trash_orders FOR INSERT WITH CHECK (true);
 
 -- -------------------------------------------
 -- Functions
