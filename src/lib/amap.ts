@@ -19,10 +19,10 @@ export function loadAMap(): Promise<void> {
 
   loadPromise = new Promise((resolve, reject) => {
     const script = document.createElement('script');
-    script.src = `https://webapi.amap.com/maps?v=2.0&key=${key}&plugin=AMap.Geolocation`;
+    script.src = `https://webapi.amap.com/maps?v=2.0&key=${key}&plugin=AMap.Geolocation,AMap.Autocomplete,AMap.PlaceSearch`;
     script.async = true;
     script.onload = () => { amapLoaded = true; resolve(); };
-    script.onerror = reject;
+    script.onerror = () => reject(new Error('Failed to load AMap'));
     document.head.appendChild(script);
   });
 
@@ -37,8 +37,40 @@ export async function getCurrentPosition(): Promise<{ lat: number; lng: number }
       if (status === 'complete') {
         resolve({ lat: result.position.lat, lng: result.position.lng });
       } else {
-        // Default to Langfang, Hebei
         resolve({ lat: 39.5197, lng: 116.8544 });
+      }
+    });
+  });
+}
+
+export interface PlaceSuggestion {
+  id: string;
+  name: string;
+  address: string;
+  district: string;
+  location?: { lat: number; lng: number };
+}
+
+export function searchPlaces(keywords: string): Promise<PlaceSuggestion[]> {
+  return new Promise(async (resolve) => {
+    await loadAMap();
+    const AMap = window.AMap;
+    
+    const autocomplete = new AMap.Autocomplete({ city: '廊坊' });
+    autocomplete.search(keywords, (status: string, result: any) => {
+      if (status === 'complete' && result.tips) {
+        const suggestions: PlaceSuggestion[] = result.tips
+          .filter((tip: any) => tip.id && tip.name)
+          .map((tip: any) => ({
+            id: tip.id,
+            name: tip.name,
+            address: tip.address || tip.district || '',
+            district: tip.district || '',
+            location: tip.location ? { lat: tip.location.lat, lng: tip.location.lng } : undefined,
+          }));
+        resolve(suggestions);
+      } else {
+        resolve([]);
       }
     });
   });
