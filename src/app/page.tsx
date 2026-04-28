@@ -10,39 +10,34 @@ export default function HomePage() {
   const mapInstanceRef = useRef<any>(null);
 
   const initMap = useCallback(async () => {
+    if (!mapRef.current) return;
     try {
       await loadAMap();
-      if (mapRef.current && !mapInstanceRef.current) {
-        const AMap = (window as any).AMap;
-        const map = new AMap.Map(mapRef.current, {
-          zoom: 13,
-          center: [116.8544, 39.5197],
-          mapStyle: 'amap://styles/darkblue',
-        });
-        mapInstanceRef.current = map;
+      if (mapInstanceRef.current) {
+        mapInstanceRef.current.destroy();
+        mapInstanceRef.current = null;
       }
+      const AMap = (window as any).AMap;
+      const map = new AMap.Map(mapRef.current, {
+        zoom: 13,
+        center: [116.8544, 39.5197],
+      });
+      mapInstanceRef.current = map;
     } catch (e) {
       console.error('Map init failed', e);
     }
   }, []);
 
   useEffect(() => {
-    const handleVisibility = () => {
-      if (document.visibilityState === 'visible') {
-        if (mapInstanceRef.current) {
-          mapInstanceRef.current.destroy();
-          mapInstanceRef.current = null;
-        }
-        initMap();
-      }
-    };
-    document.addEventListener('visibilitychange', handleVisibility);
-    window.addEventListener('focus', initMap);
     initMap();
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibility);
-      window.removeEventListener('focus', initMap);
-    };
+    const observer = new MutationObserver(() => {
+      if (document.visibilityState === 'visible') initMap();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'visible') initMap();
+    });
+    return () => observer.disconnect();
   }, [initMap]);
 
   return (

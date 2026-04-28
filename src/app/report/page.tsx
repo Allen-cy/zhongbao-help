@@ -36,9 +36,13 @@ export default function ReportPage() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [storeName, setStoreName] = useState('');
+  const [storeSuggestions, setStoreSuggestions] = useState<PlaceSuggestion[]>([]);
+  const [showStoreSuggestions, setShowStoreSuggestions] = useState(false);
+  const [storeSearchLoading, setStoreSearchLoading] = useState(false);
   const [hygieneScore, setHygieneScore] = useState(0);
   const [hasPhysicalStore, setHasPhysicalStore] = useState<boolean | null>(null);
   const searchTimeout = useRef<NodeJS.Timeout | null>(null);
+  const storeSearchTimeout = useRef<NodeJS.Timeout | null>(null);
 
   const allFixedTags = [...PICKUP_TAGS, ...DELIVERY_TAGS, ...VALUE_TAGS];
   const customScore = customTag.trim().length >= 2 ? 10 : 0;
@@ -79,6 +83,31 @@ export default function ReportPage() {
     }
     return () => { if (searchTimeout.current) clearTimeout(searchTimeout.current); };
   }, [searchQuery, handleSearch]);
+
+  const handleStoreSearch = useCallback(async (query: string) => {
+    if (query.length < 2) { setStoreSuggestions([]); setShowStoreSuggestions(false); return; }
+    setStoreSearchLoading(true);
+    try {
+      const results = await searchPlaces(query);
+      setStoreSuggestions(results);
+      setShowStoreSuggestions(true);
+    } catch (e) {
+      console.error('Store search failed', e);
+    } finally {
+      setStoreSearchLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (storeSearchTimeout.current) clearTimeout(storeSearchTimeout.current);
+    if (storeName) {
+      storeSearchTimeout.current = setTimeout(() => handleStoreSearch(storeName), 300);
+    } else {
+      setStoreSuggestions([]);
+      setShowStoreSuggestions(false);
+    }
+    return () => { if (storeSearchTimeout.current) clearTimeout(storeSearchTimeout.current); };
+  }, [storeName, handleStoreSearch]);
 
   const selectPlace = (place: PlaceSuggestion) => {
     setSelectedPlace(place);
@@ -293,17 +322,42 @@ export default function ReportPage() {
         <section className="bg-surface-container border-2 border-surface-variant p-4 rounded-xl space-y-4">
           <h3 className="font-headline-md text-on-surface uppercase border-b-2 border-surface-variant pb-2">商家信息（选填）</h3>
 
-          {/* Store Name */}
+          {/* Store Name with Autocomplete */}
           <div>
             <label className="font-label-md text-surface-variant uppercase mb-1 block">商家名称</label>
-            <input
-              type="text"
-              value={storeName}
-              onChange={e => setStoreName(e.target.value)}
-              placeholder="输入商家名称..."
-              maxLength={30}
-              className="w-full bg-white border-2 border-gray-300 text-gray-900 px-3 py-2 rounded-lg text-sm placeholder:text-gray-400"
-            />
+            <div className="relative">
+              <input
+                type="text"
+                value={storeName}
+                onChange={e => setStoreName(e.target.value)}
+                onFocus={() => storeSuggestions.length > 0 && setShowStoreSuggestions(true)}
+                placeholder="搜索商家名称..."
+                maxLength={30}
+                className="w-full bg-white border-2 border-gray-300 text-gray-900 px-3 py-2 rounded-lg text-sm placeholder:text-gray-400"
+              />
+              {storeSearchLoading && <span className="absolute right-3 top-1/2 -translate-y-1/2 material-symbols-outlined text-gray-400 animate-spin text-sm">sync</span>}
+            </div>
+            {showStoreSuggestions && storeSuggestions.length > 0 && (
+              <ul className="absolute z-50 w-full bg-white border-2 border-gray-300 mt-1 max-h-48 overflow-y-auto rounded-xl shadow-lg">
+                {storeSuggestions.map(s => (
+                  <li key={s.id}>
+                    <button
+                      onClick={() => {
+                        setStoreName(s.name);
+                        setShowStoreSuggestions(false);
+                        if (s.location) {
+                          setSelectedPlace(s);
+                        }
+                      }}
+                      className="w-full text-left px-3 py-2 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 transition-colors"
+                    >
+                      <p className="text-sm font-medium text-gray-800">{s.name}</p>
+                      <p className="text-xs text-gray-400 truncate">{s.address || s.district}</p>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
 
           {/* Hygiene Score */}
