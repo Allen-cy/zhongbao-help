@@ -38,6 +38,10 @@ CREATE TABLE IF NOT EXISTS trash_orders (
   pickup_tags TEXT[] DEFAULT '{}',
   delivery_tags TEXT[] DEFAULT '{}',
   order_value_tags TEXT[] DEFAULT '{}',
+  custom_tag VARCHAR(100),
+  store_name VARCHAR(100),
+  hygiene_score INTEGER CHECK (hygiene_score >= 1 AND hygiene_score <= 5),
+  has_physical_store BOOLEAN,
   status VARCHAR(20) DEFAULT 'pending',
   verified_count INTEGER DEFAULT 0,
   created_at TIMESTAMPTZ DEFAULT NOW()
