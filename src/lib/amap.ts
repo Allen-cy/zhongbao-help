@@ -9,7 +9,7 @@ let amapLoaded = false;
 let loadPromise: Promise<void> | null = null;
 
 export function loadAMap(): Promise<void> {
-  if (amapLoaded) return Promise.resolve();
+  if (amapLoaded && window.AMap) return Promise.resolve();
   if (loadPromise) return loadPromise;
 
   const key = process.env.NEXT_PUBLIC_AMAP_KEY || '21a86f420ac2cb8b6d686c153ef1e497';
@@ -17,12 +17,27 @@ export function loadAMap(): Promise<void> {
 
   window._AMapSecurityConfig = { securityJsCode: securityKey };
 
-  loadPromise = new Promise((resolve, reject) => {
+  loadPromise = new Promise<void>((resolve, reject) => {
     const script = document.createElement('script');
     script.src = `https://webapi.amap.com/maps?v=2.0&key=${key}`;
     script.async = true;
+
     script.onload = () => { amapLoaded = true; resolve(); };
     script.onerror = () => reject(new Error('Failed to load AMap'));
+
+    const timeout = setTimeout(() => {
+      if (!window.AMap) reject(new Error('AMap load timeout'));
+    }, 15000);
+
+    const checkInterval = setInterval(() => {
+      if (window.AMap) {
+        clearTimeout(timeout);
+        clearInterval(checkInterval);
+        amapLoaded = true;
+        resolve();
+      }
+    }, 100);
+
     document.head.appendChild(script);
   });
 
@@ -54,24 +69,34 @@ export interface PlaceSuggestion {
   location?: { lat: number; lng: number };
 }
 
-export function searchPlaces(keywords: string): Promise<PlaceSuggestion[]> {
-  return new Promise(async (resolve) => {
-    await loadAMap();
+export async function searchPlaces(keywords: string): Promise<PlaceSuggestion[]> {
+  if (!keywords || keywords.trim().length < 2) return [];
+
+  await loadAMap();
+  if (!window.AMap) return [];
+
+  return new Promise((resolve) => {
     const AMap = window.AMap;
 
-    AMap.plugin('AMap.Autocomplete', () => {
-      const autocomplete = new AMap.Autocomplete({ city: '廊坊' });
-      autocomplete.search(keywords, (status: string, result: any) => {
-        if (status === 'complete' && result && result.tips) {
-          const suggestions: PlaceSuggestion[] = result.tips
-            .filter((tip: any) => tip.id && tip.name)
-            .map((tip: any) => ({
-              id: tip.id,
-              name: tip.name,
-              address: tip.address || '',
-              district: tip.district || '',
-              location: tip.location ? { lat: tip.location.lat, lng: tip.location.lng } : undefined,
-            }));
+    AMap.plugin('AMap.PlaceSearch', () => {
+      const placeSearch = new AMap.PlaceSearch({
+        city: '廊坊',
+        citylimit: false,
+        pageSize: 10,
+        pageIndex: 1,
+      });
+
+      placeSearch.search(keywords, (status: string, result: any) => {
+        console.log('[PlaceSearch] status:', status, 'result:', JSON.stringify(result)?.slice(0, 300));
+
+        if (status === 'complete' && result && result.poiList && result.poiList.pois) {
+          const suggestions: PlaceSuggestion[] = result.poiList.pois.map((poi: any) => ({
+            id: poi.id || '',
+            name: poi.name || '',
+            address: poi.address || '',
+            district: poi.pname || '',
+            location: poi.location ? { lat: poi.location.lat, lng: poi.location.lng } : undefined,
+          }));
           resolve(suggestions);
         } else {
           resolve([]);
