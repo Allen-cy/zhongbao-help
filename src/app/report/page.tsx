@@ -183,7 +183,7 @@ export default function ReportPage() {
                   onChange={e => setSearchQuery(e.target.value)}
                   onFocus={() => suggestions.length > 0 && setShowSuggestions(true)}
                   placeholder="搜索地址或商圈..."
-                  className="w-full bg-surface-container-high border-2 border-surface-variant text-on-surface focus:border-primary-container h-12 pl-12 pr-4 text-base placeholder:text-inverse-surface/40 uppercase"
+                  className="w-full bg-white border-2 border-gray-300 text-gray-900 focus:border-[#ff544c] h-12 pl-12 pr-4 text-base placeholder:text-gray-400 rounded-xl"
                 />
                 {isSearching && <span className="absolute right-4 top-1/2 -translate-y-1/2 material-symbols-outlined text-surface-tint animate-spin">sync</span>}
               </div>
@@ -275,7 +275,7 @@ export default function ReportPage() {
                 onChange={e => setCustomTag(e.target.value)}
                 placeholder="手动输入其他难点..."
                 maxLength={20}
-                className="flex-1 bg-surface border-2 border-surface-variant text-on-surface px-3 py-2 rounded-lg text-sm uppercase placeholder:text-inverse-surface/40"
+                className="flex-1 bg-white border-2 border-gray-300 text-gray-900 px-3 py-2 rounded-lg text-sm placeholder:text-gray-400"
               />
               {customTag.trim().length >= 2 && (
                 <span className="flex items-center px-3 bg-red-100 border-2 border-red-500 text-red-700 rounded-lg text-sm font-bold">
@@ -302,7 +302,7 @@ export default function ReportPage() {
               onChange={e => setStoreName(e.target.value)}
               placeholder="输入商家名称..."
               maxLength={30}
-              className="w-full bg-surface border-2 border-surface-variant text-on-surface px-3 py-2 rounded-lg text-sm uppercase placeholder:text-inverse-surface/40"
+              className="w-full bg-white border-2 border-gray-300 text-gray-900 px-3 py-2 rounded-lg text-sm placeholder:text-gray-400"
             />
           </div>
 

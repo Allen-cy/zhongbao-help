@@ -1,75 +1,82 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import BottomNav from '@/components/BottomNav';
 import TopBar from '@/components/TopBar';
+import Link from 'next/link';
 
 export default function ProfilePage() {
+  const [stats, setStats] = useState({ totalMarks: 0, avgScore: 0, locationsCount: 0 });
+
+  useEffect(() => {
+    fetch('/api/trash-orders')
+      .then(r => r.json())
+      .then(data => {
+        if (data.data && data.data.length > 0) {
+          const orders = data.data;
+          setStats({
+            totalMarks: orders.length,
+            avgScore: Math.round(orders.reduce((s: number, o: any) => s + o.score, 0) / orders.length),
+            locationsCount: new Set(orders.map((o: any) => o.location_name)).size,
+          });
+        }
+      })
+      .catch(() => {});
+  }, []);
+
   return (
-    <div className="min-h-screen bg-background text-on-background pb-20 pt-14">
+    <div className="min-h-screen bg-gray-50 pb-20 pt-14">
       <TopBar />
-      <main className="max-w-3xl mx-auto px-edge-margin pt-lg space-y-lg">
-        {/* User Identity */}
-        <section className="flex flex-col items-center justify-center space-y-sm">
-          <div className="w-32 h-32 rounded-full border-4 border-surface-variant overflow-hidden mb-2 relative">
-            <img alt="Rider" className="w-full h-full object-cover" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face"/>
-            <div className="absolute bottom-0 left-0 w-full bg-primary-container text-on-primary-container text-center py-1 font-label-md font-bold uppercase">活跃中</div>
+      <main className="max-w-2xl mx-auto px-4 pt-6 space-y-5">
+
+        {/* User Card */}
+        <section className="bg-white rounded-2xl p-5 shadow-sm border border-gray-200 flex flex-col items-center">
+          <div className="w-20 h-20 rounded-full bg-[#ff544c] flex items-center justify-center mb-3">
+            <span className="material-symbols-outlined text-white text-4xl" style={{ fontVariationSettings: "'FILL' 1" }}>person</span>
           </div>
-          <h2 className="font-headline-lg text-center uppercase tracking-tight">骑手 8492-X</h2>
-          <div className="flex items-center gap-xs text-secondary px-sm py-1 border-2 border-secondary rounded-sm">
-            <span className="material-symbols-outlined text-sm" style={{ fontVariationSettings: "'FILL' 1" }}>verified</span>
-            <span className="font-label-xl uppercase">精英认证</span>
+          <h2 className="font-bold text-lg text-gray-800">匿名骑手</h2>
+          <p className="text-sm text-gray-400 mt-1">开始使用 App 标记垃圾单</p>
+        </section>
+
+        {/* Stats */}
+        <section className="grid grid-cols-3 gap-3">
+          <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 text-center">
+            <div className="text-2xl font-bold font-['Space_Grotesk'] text-[#ff544c]">{stats.totalMarks}</div>
+            <div className="text-xs text-gray-400 uppercase mt-1 tracking-wide">累计标记</div>
+          </div>
+          <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 text-center">
+            <div className="text-2xl font-bold font-['Space_Grotesk'] text-[#ff544c]">{stats.avgScore || '-'}</div>
+            <div className="text-xs text-gray-400 uppercase mt-1 tracking-wide">平均难度</div>
+          </div>
+          <div className="bg-white rounded-xl p-4 shadow-sm border border-gray-200 text-center">
+            <div className="text-2xl font-bold font-['Space_Grotesk'] text-[#ff544c]">{stats.locationsCount}</div>
+            <div className="text-xs text-gray-400 uppercase mt-1 tracking-wide">标记地点</div>
           </div>
         </section>
 
-        {/* Stats Grid */}
-        <section className="grid grid-cols-2 gap-sm">
-          <div className="bg-surface-container border-2 border-surface-variant rounded-DEFAULT p-md flex flex-col justify-between">
-            <div className="flex items-start justify-between mb-lg">
-              <span className="font-label-xl text-surface-tint uppercase">累计标记</span>
-              <span className="material-symbols-outlined text-surface-tint">flag</span>
-            </div>
-            <div className="font-data-display text-on-surface">1,402</div>
-          </div>
-          <div className="bg-surface-container border-2 border-surface-variant rounded-DEFAULT p-md flex flex-col justify-between">
-            <div className="flex items-start justify-between mb-lg">
-              <span className="font-label-xl text-secondary uppercase">信誉分</span>
-              <span className="material-symbols-outlined text-secondary">star</span>
-            </div>
-            <div className="font-data-display text-on-surface">98.4<span className="text-headline-md font-headline-md">%</span></div>
-          </div>
-          <div className="col-span-2 bg-surface-container border-2 border-surface-variant rounded-DEFAULT p-md">
-            <div className="flex items-start justify-between mb-sm">
-              <span className="font-label-xl text-inverse-surface uppercase">排名：前 5%</span>
-              <span className="font-label-md text-surface-variant uppercase">下一等级：还差 15K 积分</span>
-            </div>
-            <div className="w-full bg-surface-container-lowest h-3 rounded-sm overflow-hidden mb-2 border border-surface-variant">
-              <div className="bg-primary-container h-full w-[85%] rounded-sm" style={{ backgroundImage: 'repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.2) 10px, rgba(0,0,0,0.2) 20px)' }}></div>
-            </div>
-          </div>
+        {/* CTA */}
+        <section className="bg-[#ff544c] rounded-2xl p-5 text-white text-center">
+          <p className="text-sm mb-3 opacity-90">帮助同行避坑，从标记垃圾单开始</p>
+          <Link href="/report" className="inline-flex items-center gap-2 bg-white text-[#ff544c] font-bold px-5 py-3 rounded-xl uppercase text-sm tracking-wide">
+            <span className="material-symbols-outlined text-lg" style={{ fontVariationSettings: "'FILL' 1" }}>report</span>
+            去标记垃圾单
+          </Link>
         </section>
 
-        {/* Action List */}
-        <section className="space-y-sm">
+        {/* Menu */}
+        <section className="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
           {[
-            { icon: 'history', label: '我的标记', href: '#' },
-            { icon: 'help_center', label: '帮助中心', href: '#' },
-            { icon: 'settings', label: '设置', href: '#' },
+            { icon: 'history', label: '帮助中心' },
+            { icon: 'info', label: '关于 App' },
           ].map((item) => (
-            <a key={item.icon} className="flex items-center justify-between p-md bg-surface-container-high border-2 border-surface-variant rounded-DEFAULT hover:border-surface-tint transition-colors group min-h-touch-target-min cursor-pointer" href={item.href}>
-              <div className="flex items-center gap-md">
-                <span className="material-symbols-outlined text-on-surface-variant group-hover:text-surface-tint transition-colors">{item.icon}</span>
-                <span className="font-headline-md text-on-surface">{item.label}</span>
+            <div key={item.icon} className="flex items-center justify-between px-5 py-4 border-b border-gray-100 last:border-b-0 hover:bg-gray-50 transition-colors cursor-pointer">
+              <div className="flex items-center gap-3">
+                <span className="material-symbols-outlined text-gray-400">{item.icon}</span>
+                <span className="font-medium text-gray-700">{item.label}</span>
               </div>
-              <span className="material-symbols-outlined text-on-surface-variant">chevron_right</span>
-            </a>
+              <span className="material-symbols-outlined text-gray-300">chevron_right</span>
+            </div>
           ))}
-        </section>
-
-        {/* Log Out */}
-        <section className="pt-md">
-          <button className="w-full min-h-touch-target-min bg-transparent border-2 border-error text-error font-headline-md uppercase tracking-wide hover:bg-error hover:text-on-error transition-colors rounded-DEFAULT flex items-center justify-center gap-2">
-            <span className="material-symbols-outlined">logout</span> 退出登录
-          </button>
         </section>
       </main>
       <BottomNav />
